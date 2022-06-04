@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Traffic Lights</title>
+	<style>
+			body{
+				background-color: #EFEFEF;
+			}
+
+			#box{
+				margin: 100px auto;
+				border: 5px solid #3A3A3A;
+				border-radius: 10px;
+				padding: 10px;
+				width: 86px;
+				background-color: #F1F3F4;
+				
+			}
+			#div1,#div2,#div3 {
+				border-radius: 100%;
+				background-color: #3A3A3A;
+				border: 3px solid #3A3A3A;
+			}
+	</style>
+</head>
+
+<body>
+    <p style="text-align: center;font-weight: bold;font-size: 25px;font-family: sans-serif;">Demonstrate traffic lights system</p>
+
+    <div id="box">
+    	<div id="div1" style="width:80px;height:80px;"></div><br>
+    	<div id="div2" style="width:80px;height:80px;"></div><br>
+    	<div id="div3" style="width:80px;height:80px;"></div>
+    </div>
+
+</body>
+<script>
+    $(document).ready(function () {
+		//***  colors ****/
+        const RED = '#f44747';
+        const YELLOW = '#eedc31';
+        const GREEN = '#7fdb6a';
+
+        const DARK = '#3A3A3A' // light off
+
+        const STOP = $("#div1"); // status
+        const READY = $("#div2");
+        const GO = $("#div3");
+
+		//**** init ****/
+		var state; // for the stop ready go states
+		
+		
+		//*** on start states ***/
+        //STOP.css({ 'background-color': RED });
+		//state = 0;
+		
+        //READY.css({ 'background-color': YELLOW });
+		//state = 1
+		
+		// when starts it is set to go state
+		GO.css({ 'background-color': GREEN }); 
+		state = 2;
+
+		//*** change status ***/
+        setInterval(function () {
+            // state 0 > STOP
+            // state 1 > READY 
+            // state default > GO 
+            switch (state) {
+                case 0:
+                    state = 1;
+                    GO.css({ 'background-color': DARK });
+                    STOP.css({ 'background-color': RED });
+                    break;
+                case 1:
+                    state = 2;
+                    STOP.css({ 'background-color': DARK });
+                    READY.css({ 'background-color': YELLOW });
+                    break;
+                default:
+                    state=0;
+                    READY.css({ 'background-color': DARK });
+                    GO.css({ 'background-color': GREEN });
+            }
+
+        }, 2000);
+        
+    });
+
+</script>
+
+</html>

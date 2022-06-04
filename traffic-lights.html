@@ -53,19 +53,17 @@
 
 	//**** init ****/
 	var state; // for the stop ready go states
-		
-		
+	    
 	//*** on start states ***/
         //STOP.css({ 'background-color': RED });
-	//state = 0;
-		
+	    
         //READY.css({ 'background-color': YELLOW });
-	//state = 1
-		
+	    
 	// when starts it is set to go state
-	GO.css({ 'background-color': GREEN }); 
-	state = 2;
-
+	GO.css({ 'background-color': GREEN });
+	    
+	state = 0; // after 2 seconds go to STOP
+	
 	//*** change status ***/
         setInterval(function () {
             // state 0 > STOP
